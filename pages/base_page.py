@@ -1,8 +1,8 @@
-from selenium import webdriver
-from selenium.webdriver.common.action_chains import ActionChains
 import allure
+from selenium import webdriver
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from data import from_address, to_address
 
 
 class BasePage:
@@ -65,6 +65,7 @@ class BasePage:
         locator = locator.format(num)
         return method, locator
     
+
     @allure.step('Проверить кликабельность элемента')
     def check_element_is_clickable(self, locator):
         return WebDriverWait(self.driver, 20).until(EC.element_to_be_clickable(locator))
@@ -76,31 +77,13 @@ class BasePage:
         self.driver.execute_script("arguments[0].scrollIntoView();", element) 
 
 
-    @allure.step("Перетащить элемент")
-    def drag_and_drop_element(self, source_element, target_element):
-        script = """
-            function simulateHTML5DragAndDrop(sourceNode, destinationNode) {
-                var dataTransfer = new DataTransfer();
-                var dragStartEvent = new DragEvent('dragstart', {
-                    bubbles: true,
-                    cancelable: true,
-                    dataTransfer: dataTransfer
-                });
-                sourceNode.dispatchEvent(dragStartEvent);
+    @allure.step("Ввод разных адресов")
+    def add_different_addresses(self, locator_from, locator_to):
+        self.add_text_to_element(locator_from, from_address)
+        self.add_text_to_element(locator_to, to_address)
 
-                var dropEvent = new DragEvent('drop', {
-                    bubbles: true,
-                    cancelable: true,
-                    dataTransfer: dataTransfer
-                });
-                destinationNode.dispatchEvent(dropEvent);
-             var dragEndEvent = new DragEvent('dragend', {
-                    bubbles: true,
-                    cancelable: true,
-                    dataTransfer: dataTransfer
-                });
-                sourceNode.dispatchEvent(dragEndEvent);
-            }
-            simulateHTML5DragAndDrop(arguments[0], arguments[1]);
-            """
-        self.driver.execute_script(script, source_element, target_element)
+
+    @allure.step("Ввод одинаковых адресов")
+    def add_equal_addresses(self, locator_from, locator_to):
+        self.add_text_to_element(locator_from, from_address)
+        self.add_text_to_element(locator_to, from_address)

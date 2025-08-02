@@ -1,6 +1,7 @@
 import pytest
 from selenium import webdriver
 from pages.route_drawing_page import RouteDrawingPage
+from pages.route_data_page import RouteDataPage
 
 
 
@@ -12,14 +13,14 @@ def driver():
     yield chrome
     chrome.quit()
 
-# фикстура для главной страницы
+# фикстура для страницы отрисовки маршрута
 @pytest.fixture
 def route_drawing_page(driver):
     page_route_drawing = RouteDrawingPage(driver)
     return page_route_drawing
 
-# фикстура для страницы заказа
-#@pytest.fixture
-#def order_page(driver):
-    #page_order = OrderPage(driver)
-    #return page_order
+# фикстура для страницы отображения блока с выбором маршрута
+@pytest.fixture
+def route_data_page(driver):
+    page_route_data = RouteDataPage(driver)
+    return page_route_data
