@@ -1,6 +1,6 @@
 import allure
-from selenium import webdriver
 from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support import expected_conditions as EC
 from data import from_address, to_address
 
@@ -11,7 +11,7 @@ class BasePage:
         self.driver = driver
         self.wait = WebDriverWait(self.driver, 5)
 
-
+    
     @allure.step("Перейти по URL'у")
     def go_to_url(self, url):
         self.driver.get(url)
@@ -20,18 +20,24 @@ class BasePage:
     @allure.step("Найти элемент")
     def find_element_with_wait(self, locator):
         self.wait.until(EC.visibility_of_element_located(locator))
-        return self.driver.find_element(*locator) 
+        return self.driver.find_element(*locator)
     
+
+    @allure.step("Ожидание появления элементов") # вернет список элементов
+    def wait_for_elements(self, locator, index=None):
+        return self.wait.until(EC.visibility_of_all_elements_located(locator))
+
 
     @allure.step('Проверить кликабельность элемента')
     def check_element_is_clickable(self, locator):
         return WebDriverWait(self.driver, 20).until(EC.element_to_be_clickable(locator))
-    
+
 
     @allure.step("Кликнуть на элемент")
     def click_to_element(self, locator):
         element = self.find_element_with_wait(locator)
         element.click()
+
 
     @allure.step('Проверить отображение элемента')
     def check_displaying_of_element(self, locator):
@@ -66,11 +72,6 @@ class BasePage:
         return method, locator
     
 
-    @allure.step('Проверить кликабельность элемента')
-    def check_element_is_clickable(self, locator):
-        return WebDriverWait(self.driver, 20).until(EC.element_to_be_clickable(locator))
-    
-
     @allure.step("Доскроллить до элемента")
     def scroll_to_element(self, locator):
         element = self.driver.find_element(*locator)
@@ -87,3 +88,15 @@ class BasePage:
     def add_equal_addresses(self, locator_from, locator_to):
         self.add_text_to_element(locator_from, from_address)
         self.add_text_to_element(locator_to, from_address)
+
+
+    @allure.step("Навести на элемент")
+    def hover_to_element(self, locator):
+        info_icon = self.find_element_with_wait(locator) 
+        actions = ActionChains(self.driver)
+        actions.move_to_element(info_icon).perform()
+
+
+    @allure.step("Ожидание элемента в 30 сек")
+    def long_waiting_element(self, locator):
+        return WebDriverWait(self.driver, 32).until(EC.visibility_of_element_located(locator))
