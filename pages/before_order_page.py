@@ -1,5 +1,4 @@
 import allure
-import pytest
 from pages.base_page import BasePage
 from locators.before_order_page_locators import BeforeOrderPageLocators
 

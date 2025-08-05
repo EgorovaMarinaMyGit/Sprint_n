@@ -6,6 +6,7 @@ class ScenarioPageLocators:
     FROM = (By.XPATH, "//input[@id='from']") # поле "Откуда"
     TO = (By.XPATH, "//input[@id='to']") # поле "Куда"
     CALL_TAXI = (By.XPATH, "//button[contains(text(),'Вызвать такси')]") # кнопка "Вызвать такси"
+    WORKING = (By.XPATH, "//div[contains(text(),'Рабочий')]") # Рабочий
     ORDER_REQUIREMENTS = (By.XPATH, "//div[contains(text(),'Требования к заказу')]") # поле "Требования к заказу"
     TABLE_FOR_LAPTOP = (By.XPATH, "//span[@class='slider round']") # чек-бокс "Столик для ноутбука"
     ADD_NUMBER_AND_BOOK_BUTTON = (By.XPATH, "//button[@class='smart-button']") # Ввести номер и заказать
@@ -19,5 +20,9 @@ class ScenarioPageLocators:
     DRIVER_NAME = (By.XPATH, "//div[@class='order-btn-group']//div[2]") # имя водителя
     DRIVER_AVATAR = (By.XPATH, "//img[@src='/static/media/bender.e90e5089.svg']") # аватарка водителя
     DRIVER_RATING = (By.XPATH, "//div[@class='order-button']//div[1]") # рейтинг водителя
+    PRICE = (By.XPATH, "//div[@class='tcard-price']") # цена у тарифа
+    PRICE_IN_DETAILS = (By.XPATH, "//div[contains(text(),'Стоимость')]") # цена в Деталях
+    WINDOW_WAITING = (By.XPATH, "//div[@class='order-body']") # цена у тарифа
+
     
 

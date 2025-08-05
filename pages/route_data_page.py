@@ -3,7 +3,7 @@ from pages.base_page import BasePage
 from locators.route_data_page_locators import RouteDataPageLocators
 
 
-class RouteDataPage(BasePage):
+class RouteDataPage(BasePage): 
 
     @allure.step("Ввод разных адресов")
     def add_addresses(self):
@@ -56,10 +56,10 @@ class RouteDataPage(BasePage):
         return car_icon_visible and man_icon_visible and taxi_icon_visible and bike_icon_visible and scooter_icon_visible and drive_icon_visible
     
 
-    @allure.step("Проверка отображения стоимости")
+    @allure.step("Проверка отображения стоимости") 
     def check_visibility_price(self):
-        self.find_element_with_wait(RouteDataPageLocators.PRICE_TAXI)
-        return self.check_displaying_of_element(RouteDataPageLocators.PRICE_TAXI)
+        self.find_element_with_wait(RouteDataPageLocators.PRICE)
+        return self.check_displaying_of_element(RouteDataPageLocators.PRICE)
     
 
     @allure.step("Проверка отображения времени в пути")

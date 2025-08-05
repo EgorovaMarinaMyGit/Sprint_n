@@ -1,19 +1,16 @@
 from selenium.webdriver.common.by import By
 
 
-class OrderTaxiPageLocators:
+class OrderTaxiPageLocators: 
 
     FROM = (By.XPATH, "//input[@id='from']") # поле "Откуда"
     TO = (By.XPATH, "//input[@id='to']") # поле "Куда"
-
-    # ПРОВЕРИТЬ ГДЕ ИСПОЛЬЗУЮТСЯ ЭТИ ЛОКАТОРЫ!!! И ПЕРЕДЕЛАТЬ ЕСЛИ ЧТО КАК ПЕРВЫЙ ТУТ - ЕГО НАХОДИТ
-    WORKING = (By.XPATH, "//div[contains(text(),'Рабочий')]") # Рабочий
-    WORKING = (By.XPATH, "//div[@class='tcard-title' and text()='Рабочий']") # Рабочий
-    SLEEPY = (By.XPATH, "//div[@class='tcard-title' and text()='Сонный']") # Сонный
-    VACATION = (By.XPATH, "//div[@class='tcard-title' and text()='Отпускной')]") # Отпускной
-    TALKATIVE = (By.XPATH, "//div[@class='tcard-title' and text()='Разговорчивый')]") # Разговорчивый
-    CONSOLATION = (By.XPATH, "//div[@class='tcard-title' and text()='Утешительный')]") # Утешительный
-    GLOSSY = (By.XPATH, "//div[@class='tcard-title' and text()='Глянцевый')]") # Глянцевый
+    WORKING = (By.XPATH, "//div[@class='tcard-title'][contains(text(),'Рабочий')]") # Рабочий
+    SLEEPY = (By.XPATH, "//div[@class='tcard-title'][contains(text(),'Сонный')]") # Сонный
+    VACATION = (By.XPATH, "//div[@class='tcard-title'][contains(text(),'Отпускной')]") # Отпускной
+    TALKATIVE = (By.XPATH, "//div[@class='tcard-title'][contains(text(),'Разговорчивый')]") # Разговорчивый
+    CONSOLATION = (By.XPATH, "//div[@class='tcard-title'][contains(text(),'Утешительный')]") # Утешительный
+    GLOSSY = (By.XPATH, "//div[@class='tcard-title'][contains(text(),'Глянцевый')]") # Глянцевый
     CARD_LOCATOR = [By.XPATH, "//div[@class='tariff-cards']//div[contains(@class,'tcard')]"]
     CALL_TAXI = (By.XPATH, "//button[contains(text(),'Вызвать такси')]") # кнопка "Вызвать такси"
     TELEPHONE_FIELD = (By.XPATH, "//div[contains(text(),'Телефон')]") # поле "Телефон"

@@ -6,7 +6,6 @@ from data import URL
 class TestBeforeOrderPage:
 
 
-    # ПЕРЕДЕЛАТЬ ТЕСТ ЭТОТ И СЛЕДУЮЩИЙ? СДЕЛАТЬ ПОЛУЧЕНИЕ СПИСКА?
     @allure.title("Проверка, что при переключении между видами маршрута \
     \ 'Быстрый' и 'Оптимальный' происходит смена активного таба")
     def test_changing_active_tab_after_swich_fast_to_optimal(self, before_order_page):
@@ -21,7 +20,7 @@ class TestBeforeOrderPage:
         assert taxi_active_on_fast == True and car_no_active_on_fast == True \
             and taxi_no_active_on_optimal == True and car_active_on_optimal == True
 
-
+    @pytest.mark.xfail(reason="При переключении тарифов время не меняется")
     @allure.title("Проверка, что при переключении между видами маршрута \
     \ 'Быстрый' и 'Оптимальный' происходит пересчет времени и стоимости маршрута")
     def test_changing_price_and_duration_after_swich_fast_to_optimal(self, before_order_page):

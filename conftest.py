@@ -16,11 +16,13 @@ def driver():
     yield chrome
     chrome.quit()
 
+
 # фикстура для страницы отрисовки маршрута
 @pytest.fixture
 def route_drawing_page(driver):
     page_route_drawing = RouteDrawingPage(driver)
     return page_route_drawing
+
 
 # фикстура для страницы отображения блока с выбором маршрута
 @pytest.fixture

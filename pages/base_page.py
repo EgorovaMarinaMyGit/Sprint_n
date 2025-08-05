@@ -39,7 +39,7 @@ class BasePage:
         element.click()
 
 
-    @allure.step('Проверить отображение элемента')
+    @allure.step('Проверить отображение элемента') 
     def check_displaying_of_element(self, locator):
         return self.driver.find_element(*locator).is_displayed()
 

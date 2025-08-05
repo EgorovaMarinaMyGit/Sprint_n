@@ -1,5 +1,4 @@
 import allure
-import pytest
 from pages.base_page import BasePage
 from locators.order_taxi_page_locators import OrderTaxiPageLocators
 from data import taxi_rates
@@ -28,7 +27,7 @@ class OrderTaxiPage(BasePage):
         return displaying_rates
 
 
-    @allure.step("Получение атрибута карточки тарифа")
+    @allure.step("Получение атрибута карточки тарифа") 
     def get_attribute_of_rate_card(self):
         rates = self.wait_for_elements(OrderTaxiPageLocators.CARD_LOCATOR)
         active_rate = []

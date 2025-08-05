@@ -16,8 +16,8 @@ class RouteDataPageLocators:
     BIKE_ICON = (By.XPATH, "//img[@src='/static/media/bike.fb41c762.svg']") # иконка велосипед
     SCOOTER_ICON = (By.XPATH, "//img[@src='/static/media/scooter.cf9bb57e.svg']") # иконка самокат
     DRIVE_ICON = (By.XPATH, "//img[@src='/static/media/drive.fa5137d7.svg']") # иконка драйв
-    PRICE_TAXI = (By.XPATH, "//div[contains(text(),'Такси ~ 188 руб.')]") # Такси ~ 188 руб.
-    DURATION = (By.XPATH, "//div[contains(text(),'В пути 3 мин.')]") # В пути 3 мин.
+    PRICE = (By.XPATH, "//div[@class='text']") # стоимость
+    DURATION = (By.XPATH, "//div[@class='duration']") # время
     CALL_TAXI = (By.XPATH, "//button[contains(text(),'Вызвать такси')]") # кнопка "Вызвать такси"
     BOOKING = (By.XPATH, "//button[contains(text(),'Забронировать')]") # кнопка "Забронировать"
     FREE_AVTO = (By.XPATH, "//div[contains(text(),'Авто Бесплатно')]") # Авто Бесплатно

@@ -27,8 +27,8 @@ class TestOrderTaxiPage:
         assert len(active_rate) == 1
 
 
-    # ТЕСТ ПАДАЕТ! В data поменять потом местами описания тарифов как в ПО - чтобы \
-    # падал после исправления и добавить xfail
+    @pytest.mark.xfail(reason="У тарифов 'Сонный' и 'Разговорчивый' в ПО не такое описание, \
+    \ как в ПО")
     @allure.title("Проверка, что после введения адресов, выбора тарифа 'Быстрый' и нажатия \
     \ кнопки 'Заказать такси' при наведении на иконку i в правом верхнем углу каждого тарифа \
     \ отображается всплывающее окно с описанием тарифа, описание тарифа соответствует ТЗ")
@@ -36,8 +36,7 @@ class TestOrderTaxiPage:
         order_taxi_page.go_to_url(URL)
         order_taxi_page.add_addresses()
         order_taxi_page.click_call_taxi_button()
-        names_and_description_of_rates = order_taxi_page.get_list_with_rates_and_descriptions
-
+        names_and_description_of_rates = order_taxi_page.get_list_with_rates_and_descriptions()
         assert names_and_description_of_rates == expected_rates_names_and_descriptions
 
 
